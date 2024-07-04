@@ -51,7 +51,11 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "quickstart", "development"]
+      "pages": [
+        "introduction",
+        "quickstart",
+        "development"
+      ]
     },
     {
       "group": "Essentials",
@@ -66,39 +70,19 @@
     },
     {
       "group": "API Documentation",
-      "pages": ["api-reference/introduction"]
+      "pages": [
+        "api-reference/introduction"
+      ]
     },
     {
       "group": "Endpoints",
       "pages": [
-        "api-reference/endpoint/send-an-email",
-        "api-reference/endpoint/enrich-contact-icypeas",
-        "api-reference/endpoint/enrich-drop-contact",
-        "api-reference/endpoint/enrich-prospeo",
-        "api-reference/endpoint/enrich-findy-mail",
-        "api-reference/endpoint/aiscraper",
-        "api-reference/endpoint/build-linkedin-url",
-        "api-reference/endpoint/build-sales-nav-url",
-        "api-reference/endpoint/scrape-url",
-        "api-reference/endpoint/register-account",
-        "api-reference/endpoint/delete-account",
-        "api-reference/endpoint/searchCompanies"
+        "api-reference/endpoint/lead-to-campaign"
       ]
     }
   ],
   "openapi": [
-    "./openapi/send-mail.json", 
-    "./openapi/icypeas.json",
-    "./openapi/drop-contact.json",
-    "./openapi/prospeo.json",
-    "./openapi/findy-mail.json",
-    "./openapi/aiscraper.json", 
-    "./openapi/build-linkedin-url.json",
-    "./openapi/build-sales-nav-url.json",
-    "./openapi/scrape-url.json",
-    "./openapi/register-account.json",
-    "./openapi/delete-account.json",
-    "./openapi/searchCompanies.json"
+    "./openapi/lead-to-campaign.json"
   ],
   "footerSocials": {
     "twitter": "https://twitter.com/mintlify",
