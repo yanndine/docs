@@ -1,0 +1,104 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Fetch LinkedIn Companies Data API",
+    "description": "API to fetch LinkedIn companies data based on specified filters.",
+    "version": "1.0.0"
+  },
+  "servers": [
+      {
+        "url": "https://prosp.ai/api/v1"
+      }
+    ],
+  "paths": {
+    "/searchCompanies": {
+      "post": {
+        "summary": "Fetch LinkedIn Companies Data",
+        "description": "Endpoint to fetch LinkedIn companies data based on provided filters.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "start": { "type": "number" },
+                  "count": { "type": "number" },
+                  "annualRevenueMin": { "type": "number" },
+                  "annualRevenueMax": { "type": "number" },
+                  "companyHeadcount": { "type": "array", "items": { "type": "string" } },
+                  "companyHeadcountGrowthMin": { "type": "number" },
+                  "companyHeadcountGrowthMax": { "type": "number" },
+                  "countries": { "type": "array", "items": { "type": "string" } },
+                  "jobOpportunities": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "string" },
+                        "text": { "type": "string" }
+                      },
+                      "required": ["id", "text"]
+                    }
+                  },
+                  "sessionId": { "type": "string" },
+                  "cookies": { "type": "object" }
+                },
+                "required": ["cookies"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response with fetched data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "data": { "type": "object" }
+                  },
+                  "required": ["success", "message", "data"]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - Missing request body or invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "message": { "type": "string" }
+                  },
+                  "required": ["success", "message"]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": { "type": "boolean" },
+                    "message": { "type": "string" },
+                    "error": { "type": "string" }
+                  },
+                  "required": ["success", "message", "error"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

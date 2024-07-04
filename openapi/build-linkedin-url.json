@@ -1,0 +1,184 @@
+{
+    "openapi": "3.1.0", 
+    "info": {
+      "title": "LinkedIn URL Generator API",
+      "version": "0.1.0"
+    },
+    "servers": [
+      {
+        "url": "https://prosp.ai/api/v1"
+      }
+    ],
+    "paths": {
+      "/build-linkedin-url": {
+        "get": {
+          "summary": "Generate LinkedIn URL",
+          "operationId": "generate_linkedin_url_get",
+          "parameters": [
+            {
+              "name": "networkLevels",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "description": "list of network levels"
+            },
+            {
+              "name": "keyword",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "description": "Keyword for the LinkedIn search",
+                "title": "Keyword"
+              },
+              "description": "Keyword for the LinkedIn search"
+            },
+            {
+              "name": "countries",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of countries for the LinkedIn search",
+                "title": "Countries"
+              },
+              "description": "List of countries for the LinkedIn search"
+            },
+            {
+              "name": "industries",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of industries for the LinkedIn search",
+                "title": "Industries"
+              },
+              "description": "List of industries for the LinkedIn search"
+            },
+            {
+              "name": "firstName",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "description": "First name for the LinkedIn search",
+                "title": "First Name"
+              },
+              "description": "First name for the LinkedIn search"
+            },
+            {
+              "name": "lastName",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "description": "Last name for the LinkedIn search",
+                "title": "Last Name"
+              },
+              "description": "Last name for the LinkedIn search"
+            },
+            {
+              "name": "company",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "description": "Company name for the LinkedIn search",
+                "title": "Company"
+              },
+              "description": "Company name for the LinkedIn search"
+            },
+            {
+              "name": "schoolFreetext",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "description": "School name for the LinkedIn search",
+                "title": "School Freetext"
+              },
+              "description": "School name for the LinkedIn search"
+            },
+            {
+              "name": "titleFreeText",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "description": "Job title for the LinkedIn search",
+                "title": "Title FreeText"
+              },
+              "description": "Job title for the LinkedIn search"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GenerateLinkedInUrlSuccessResponse"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/InternalServerErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "GenerateLinkedInUrlSuccessResponse": {
+          "type": "object",
+          "properties": {
+            "success": {
+              "type": "boolean"
+            },
+            "data": {
+              "type": "string"
+            }
+          },
+          "required": ["success", "data"]
+        },
+        "InternalServerErrorResponse": {
+          "type": "object",
+          "properties": {
+            "success": {
+              "type": "boolean",
+              "example": false
+            },
+            "error": {
+              "type": "string",
+              "example": "Error details here"
+            },
+            "message": {
+              "type": "string",
+              "example": "internal server error"
+            }
+          },
+          "required": ["success", "error", "message"]
+        }
+      }
+    }
+  }

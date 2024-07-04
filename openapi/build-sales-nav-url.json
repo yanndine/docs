@@ -1,0 +1,257 @@
+{
+    "openapi": "3.1.0", 
+    "info": {
+      "title": "Sales Navigator URL Generator API",
+      "version": "0.1.0"
+    },
+    "servers": [
+      {
+        "url": "https://prosp.ai/api/v1"
+      }
+    ],
+    "paths": {
+      "/build-sales-nav-url": {
+        "get": {
+          "summary": "Generate Sales Navigator URL",
+          "operationId": "generate_sales_nav_url_get",
+          "parameters": [
+            {
+              "name": "keyword",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "description": "Keyword for the Sales Navigator search",
+                "title": "Keyword"
+              },
+              "description": "Keyword for the Sales Navigator search"
+            },
+            {
+              "name": "countries",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of countries for the Sales Navigator search",
+                "title": "Countries"
+              },
+              "description": "List of countries for the Sales Navigator search"
+            },
+            {
+              "name": "industries",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of industries for the Sales Navigator search",
+                "title": "Industries"
+              },
+              "description": "List of industries for the Sales Navigator search"
+            },
+            {
+              "name": "firstName",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "description": "First name for the Sales Navigator search",
+                "title": "First Name"
+              },
+              "description": "First name for the Sales Navigator search"
+            },
+            {
+              "name": "lastName",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "description": "Last name for the Sales Navigator search",
+                "title": "Last Name"
+              },
+              "description": "Last name for the Sales Navigator search"
+            },
+            {
+              "name": "company",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "description": "Company name for the Sales Navigator search",
+                "title": "Company"
+              },
+              "description": "Company name for the Sales Navigator search"
+            },
+            {
+              "name": "schoolFreetext",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "description": "School name for the Sales Navigator search",
+                "title": "School Freetext"
+              },
+              "description": "School name for the Sales Navigator search"
+            },
+            {
+              "name": "titleFreeText",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "string",
+                "description": "Job title for the Sales Navigator search",
+                "title": "Title FreeText"
+              },
+              "description": "Job title for the Sales Navigator search"
+            },
+            {
+              "name": "profileLanguage",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of profile languages for the Sales Navigator search",
+                "title": "Profile Language"
+              },
+              "description": "List of profile languages for the Sales Navigator search"
+            },
+            {
+              "name": "seniorityLevel",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of seniority levels for the Sales Navigator search",
+                "title": "Seniority Level"
+              },
+              "description": "List of seniority levels for the Sales Navigator search"
+            },
+            {
+              "name": "companyHeadcount",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of company headcounts for the Sales Navigator search",
+                "title": "Company Headcount"
+              },
+              "description": "List of company headcounts for the Sales Navigator search"
+            },
+            {
+              "name": "yearsOfExperience",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of years of experience for the Sales Navigator search",
+                "title": "Years of Experience"
+              },
+              "description": "List of years of experience for the Sales Navigator search"
+            },
+            {
+              "name": "yearsAtCurrentCompany",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of years at current company for the Sales Navigator search",
+                "title": "Years at Current Company"
+              },
+              "description": "List of years at current company for the Sales Navigator search"
+            },
+            {
+              "name": "companyHeadquarters",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "List of company headquarters locations for the Sales Navigator search",
+                "title": "Company Headquarters"
+              },
+              "description": "List of company headquarters locations for the Sales Navigator search"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/GenerateSalesNavUrlSuccessResponse"
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal Server Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/InternalServerErrorResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "GenerateSalesNavUrlSuccessResponse": {
+          "type": "object",
+          "properties": {
+            "success": {
+              "type": "boolean"
+            },
+            "data": {
+              "type": "string"
+            }
+          },
+          "required": ["success", "data"]
+        },
+        "InternalServerErrorResponse": {
+          "type": "object",
+          "properties": {
+            "success": {
+              "type": "boolean",
+              "example": false
+            },
+            "error": {
+              "type": "string",
+              "example": "Error details here"
+            },
+            "message": {
+              "type": "string",
+              "example": "internal server error"
+            }
+          },
+          "required": ["success", "error", "message"]
+        }
+      }
+    }
+  }
+  

@@ -1,0 +1,218 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Mail Engine API",
+    "description": "API endpoints for managing email accounts in a mail engine.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://prosp.ai/api"
+    }
+  ],
+  "paths": {
+    "/mail-engine/register-accounts": {
+      "post": {
+        "summary": "Add e-mail Account",
+        "operationId": "addEmailAccounts",
+        "tags": [
+          "Mail Engine"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string"
+                        },
+                        "type": {
+                          "type": "string"
+                        },
+                        "credentials": {
+                          "type": "object",
+                          "additionalProperties": true
+                        },
+                        "user": {
+                          "type": "object",
+                          "properties": {
+                            "email": {
+                              "type": "string"
+                            },
+                            "id": {
+                              "type": "string"
+                            }
+                          },
+                          "required": ["email", "id"]
+                        }
+                      },
+                      "required": ["email", "type", "credentials", "user"]
+                    }
+                  }
+                },
+                "required": ["data"]
+              },
+              "examples": {
+                "basicExample": {
+                  "summary": "Example payload",
+                  "value": {
+                    "data": [
+                      {
+                        "email": "example@example.com",
+                        "type": "smtp/imap",
+                        "credentials": {
+                          "username": "example",
+                          "password": "password123"
+                        },
+                        "user": {
+                          "email": "user@example.com",
+                          "id": "123"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "existingEmails": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "newEmails": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "email": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "credentials": {
+                            "type": "object"
+                          },
+                          "user": {
+                            "type": "object",
+                            "properties": {
+                              "email": {
+                                "type": "string"
+                              },
+                              "id": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "email_engine_id": {
+                            "type": "string"
+                          },
+                          "auth_method": {
+                            "type": "string"
+                          },
+                          "user_id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["email", "type", "credentials", "user", "email_engine_id", "auth_method", "user_id"]
+                      }
+                    },
+                    "registeredAccounts": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "string"
+                          },
+                          "email_engine_id": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string"
+                          },
+                          "workspace_id": {
+                            "type": "string"
+                          },
+                          "added_by": {
+                            "type": "string"
+                          },
+                          "user_id": {
+                            "type": "string"
+                          },
+                          "credentials": {
+                            "type": "object"
+                          },
+                          "valid_credentials": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["id", "type", "email_engine_id", "email", "workspace_id", "added_by", "user_id", "credentials", "valid_credentials"]
+                      }
+                    },
+                    "failedValidation": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Error response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        },
+        "required": ["error"]
+      }
+    }
+  }
+}

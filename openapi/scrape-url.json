@@ -1,0 +1,154 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "LinkedIn Scraping API",
+    "description": "API for scraping LinkedIn search results",
+    "version": "1.0.0"
+  },
+  "servers": [ 
+    {
+      "url": "https://prosp.ai/api/linkedin"
+    }
+  ],
+  "paths": {
+    "/scrape-url": {
+      "post": {
+        "summary": "Scrape LinkedIn Search URL",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScrapeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScrapeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ScrapeRequest": {
+        "type": "object",
+        "properties": {
+          "workspace_id": {
+            "type": "string",
+            "description": "Workspace identifier",
+            "example": "f429c6bf-cf74-4c5f-87fa-3c9ab185b1e4"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address",
+            "example": "email@gmail.com"
+          },
+          "search_url": {
+            "type": "string",
+            "description": "LinkedIn search URL",
+            "example": "https://www.linkedin.com/search/results/all/?keywords=chatbot&origin=GLOBAL_SEARCH_HEADER&sid=.pV"
+          },
+          "list": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "List identifier",
+                "example": "08157276-3c20-4b57-91d8-261e6926ad63"
+              },
+              "name": {
+                "type": "string",
+                "description": "List name",
+                "example": "sales"
+              }
+            },
+            "required": ["id", "name"]
+          },
+          "limit": {
+            "type": "integer",
+            "description": "Number of results to fetch",
+            "example": 10
+          },
+          "preview": {
+            "type": "boolean",
+            "description": "Preview mode",
+            "example": true
+          }
+        },
+        "required": ["workspace_id", "email", "search_url", "list"]
+      },
+      "ScrapeResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Response message",
+            "example": "success"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "search_url": {
+                "type": "string",
+                "description": "LinkedIn search URL",
+                "example": "https://www.linkedin.com/search/results/all/?keywords=chatbot&origin=GLOBAL_SEARCH_HEADER&sid=.pV"
+              },
+              "workspace_id": {
+                "type": "string",
+                "description": "Workspace identifier",
+                "example": "f429c6bf-cf74-4c5f-87fa-3c9ab185b1e4"
+              },
+              "search_url_info": {
+                "type": "object",
+                "properties": {
+                  "total_search_results": {
+                    "type": "integer",
+                    "description": "Total number of search results",
+                    "example": 1000
+                  },
+                  "start": {
+                    "type": "integer",
+                    "description": "Starting point for results",
+                    "example": 10
+                  },
+                  "remaining_time": {
+                    "type": "integer",
+                    "description": "Remaining time for the scrape process",
+                    "example": 0
+                  },
+                  "contacts": {
+                    "type": "array",
+                    "description": "Array of contacts",
+                    "items": {
+                      "type": "object",
+                      "description": "Contact details"
+                    }
+                  },
+                  "progress": {
+                    "type": "integer",
+                    "description": "Progress of the scraping process",
+                    "example": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

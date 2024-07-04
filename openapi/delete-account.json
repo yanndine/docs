@@ -1,0 +1,88 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Mail Engine Delete API",
+    "description": "API endpoint for deleting email accounts from a mail engine.",
+    "version": "1.0.0" 
+  },
+  "servers": [
+    {
+      "url": "https://prosp.ai/api"
+    }
+  ],
+  "paths": {
+    "/mail-engine/delete-account/{email_engine_id}": {
+      "delete": {
+        "summary": "Delete e-mail account",
+        "operationId": "deleteEmailAccount",
+        "tags": [
+          "Mail Engine"
+        ],
+        "parameters": [
+          {
+            "name": "email_engine_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID of the email account to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Account deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["message"]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed to delete account",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    },
+                    "details": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["error"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          },
+          "details": {
+            "type": "string"
+          }
+        },
+        "required": ["error"]
+      }
+    }
+  }
+}

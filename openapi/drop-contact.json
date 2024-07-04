@@ -1,0 +1,99 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Enrichment Service API",
+    "description": "API for enriching contact information",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://prosp.ai/api"
+    }
+  ],
+  "paths": {
+    "/enrichment-services/drop-contact": {
+      "post": {
+        "summary": "Enrich - Drop contact",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ContactRequest": {
+        "type": "object",
+        "properties": {
+          "contacts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Contact"
+            }
+          }
+        },
+        "required": ["contacts"]
+      },
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "linkedinUrl": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "required": ["linkedinUrl"]
+      },
+      "ContactResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/EnrichedContact"
+        }
+      },
+      "EnrichedContact": {
+        "type": "object",
+        "properties": {
+          "linkedinUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "otherDetails": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "required": ["linkedinUrl"]
+      }
+    }
+  }
+}
