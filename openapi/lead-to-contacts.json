@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Campaign Management API",
-    "description": "API for managing leads and campaigns",
+    "title": "Lead Management API",
+    "description": "API for managing leads",
     "version": "1.0.0"
   },
   "servers": [
@@ -11,22 +11,22 @@
     }
   ],
   "paths": {
-    "/lead-to-campaign": {
+    "/lead-to-contacts": {
       "post": {
-        "summary": "Add Lead to Campaign",
+        "summary": "Add Lead to Contacts List",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LeadToCampaignRequest"
+                "$ref": "#/components/schemas/LeadToContactsRequest"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Lead successfully added to campaign",
+            "description": "Lead successfully added to contacts list",
             "content": {
               "application/json": {
                 "schema": {
@@ -56,7 +56,17 @@
             }
           },
           "403": {
-            "description": "Forbidden - API key issue, contact admin",
+            "description": "Forbidden - API key issue or contact already in workspace",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "List not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -81,32 +91,42 @@
   },
   "components": {
     "schemas": {
-      "LeadToCampaignRequest": {
+      "LeadToContactsRequest": {
         "type": "object",
         "properties": {
           "apiKey": {
             "type": "string"
           },
-          "type": {
+          "linkedinUrl": {
             "type": "string",
-            "enum": [
-              "hubspot",
-              "prosp",
-              "linkedinUrl"
-            ]
+            "format": "uri"
           },
-          "id": {
+          "list_id": {
             "type": "string"
           },
-          "campaign_id": {
-            "type": "string"
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "property": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "property",
+                "value"
+              ]
+            }
           }
         },
         "required": [
           "apiKey",
-          "type",
-          "id",
-          "campaign_id"
+          "linkedinUrl",
+          "list_id"
         ]
       },
       "SuccessResponse": {
