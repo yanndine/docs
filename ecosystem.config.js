@@ -1,12 +1,10 @@
 module.exports = {
-    apps: [
-      {
-        name: 'mintlify-server',
-        script: 'mintlify',
-        args: 'dev',
-        exec_mode: 'fork',
-        watch: true,
-      },
-    ],
-  };
-  
+  apps: [
+    {
+      name: 'mintlify-server',
+      script: 'start-mintlify.js',
+      exec_mode: 'fork',
+      watch: true,
+    },
+  ],
+};
