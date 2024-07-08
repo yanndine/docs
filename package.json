@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "mintlify": "^4.0.184",
+    "next": "^14.2.4",
     "pm2": "^5.4.2"
   },
   "name": "prosp-public-api-docs",
