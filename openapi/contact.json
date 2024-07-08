@@ -11,7 +11,7 @@
     }
   ],
   "paths": {
-    "/api/leads/contact": {
+    "/api/v1/leads/contact": {
       "post": {
         "summary": "Add Lead to Contacts List",
         "requestBody": {
