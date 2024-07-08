@@ -7,11 +7,11 @@
   },
   "servers": [
     {
-      "url": "https://prosp.ai/api"
+      "url": "https://prosp.ai/api/lead"
     }
   ],
   "paths": {
-    "/lead-to-campaign": {
+    "/campaign": {
       "post": {
         "summary": "Add Lead to Campaign",
         "requestBody": {
@@ -84,18 +84,10 @@
       "LeadToCampaignRequest": {
         "type": "object",
         "properties": {
-          "apiKey": {
+          "api_key": {
             "type": "string"
           },
-          "type": {
-            "type": "string",
-            "enum": [
-              "hubspot",
-              "prosp",
-              "linkedinUrl"
-            ]
-          },
-          "id": {
+          "linkedin_url": {
             "type": "string"
           },
           "campaign_id": {
@@ -103,9 +95,8 @@
           }
         },
         "required": [
-          "apiKey",
-          "type",
-          "id",
+          "api_key",
+          "linkedin_url",
           "campaign_id"
         ]
       },

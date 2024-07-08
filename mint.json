@@ -77,13 +77,13 @@
     {
       "group": "Endpoints",
       "pages": [
-        "api-reference/endpoint/lead-to-campaign",
+        "api-reference/endpoint/lead/campaign",
         "api-reference/endpoint/lead-to-contacts"
       ]
     }
   ],
   "openapi": [
-    "./openapi/lead-to-campaign.json",
+    "./openapi/campaign.json",
     "./openapi/lead-to-contacts.json"
   ],
   "footerSocials": {
