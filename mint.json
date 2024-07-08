@@ -78,13 +78,13 @@
       "group": "Endpoints",
       "pages": [
         "api-reference/endpoint/campaign",
-        "api-reference/endpoint/lead-to-contacts"
+        "api-reference/endpoint/contact"
       ]
     }
   ],
   "openapi": [
     "./openapi/campaign.json",
-    "./openapi/lead-to-contacts.json"
+    "./openapi/contact.json"
   ],
   "footerSocials": {
     "twitter": "https://twitter.com/mintlify",

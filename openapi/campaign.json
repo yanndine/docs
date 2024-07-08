@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://prosp.ai/api/lead"
+      "url": "https://prosp.ai/api/leads"
     }
   ],
   "paths": {

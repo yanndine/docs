@@ -7,11 +7,11 @@
   },
   "servers": [
     {
-      "url": "https://prosp.ai/api"
+      "url": "https://prosp.ai/api/leads"
     }
   ],
   "paths": {
-    "/lead-to-contacts": {
+    "/contact": {
       "post": {
         "summary": "Add Lead to Contacts List",
         "requestBody": {
