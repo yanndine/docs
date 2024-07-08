@@ -7,11 +7,11 @@
   },
   "servers": [
     {
-      "url": "https://prosp.ai/api"
+      "url": "https://prosp.ai/api/lead"
     }
   ],
   "paths": {
-    "/lead/campaign": {
+    "/campaign": {
       "post": {
         "summary": "Add Lead to Campaign",
         "requestBody": {

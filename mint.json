@@ -77,7 +77,7 @@
     {
       "group": "Endpoints",
       "pages": [
-        "api-reference/endpoint/lead/campaign",
+        "api-reference/endpoint/campaign",
         "api-reference/endpoint/lead-to-contacts"
       ]
     }
