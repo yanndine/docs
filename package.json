@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "mintlify": "^4.0.184",
+    "pm2": "^5.4.2"
+  },
+  "name": "prosp-public-api-docs",
+  "description": "Click on `Use this template` to copy the Mintlify starter kit. The starter kit contains examples including",
+  "version": "1.0.0",
+  "main": "ecosystem.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "pm2-runtime start ecosystem.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

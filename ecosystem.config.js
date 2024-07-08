@@ -2,7 +2,7 @@ module.exports = {
     apps: [
         {
             name: 'mintlify-server',
-            script: '/root/.nvm/versions/node/v20.15.0/bin/mintlify',
+            script: './node_modules/mintlify',
             args: 'dev',
             interpreter: 'none',
             env: {
