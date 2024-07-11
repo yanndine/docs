@@ -11,7 +11,7 @@
     }
   ],
   "paths": {
-    "/api/v1/leads/delete": {
+    "/api/v1/leads/campaign/delete": {
       "post": {
         "summary": "Delete a lead",
         "requestBody": {
@@ -102,13 +102,13 @@
             "format": "uri"
           },
           "campaign_id": {
-            "type": "string",
-            "description": "Optional. If provided, the lead will be deleted only from the specified campaign."
+            "type": "string"
           }
         },
         "required": [
           "api_key",
-          "linkedin_url"
+          "linkedin_url",
+          "campaign_id"
         ]
       },
       "SuccessResponse": {

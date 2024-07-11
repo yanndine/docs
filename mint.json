@@ -80,7 +80,8 @@
         "api-reference/endpoint/leads",
         "api-reference/endpoint/campaign",
         "api-reference/endpoint/contact",
-        "api-reference/endpoint/delete",
+        "api-reference/endpoint/delete-contact",
+        "api-reference/endpoint/delete-contact-campaign",
         "api-reference/endpoint/send-message",
         "api-reference/endpoint/send-voice"
       ]
@@ -90,7 +91,8 @@
     "./openapi/leads.json",
     "./openapi/campaign.json",
     "./openapi/contact.json",
-    "./openapi/delete.json",
+    "./openapi/delete-contact.json",
+    "./openapi/delete-contact-campaign.json",
     "./openapi/send-message.json",
     "./openapi/send-voice.json"
   ],
