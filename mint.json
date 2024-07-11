@@ -79,14 +79,16 @@
       "pages": [
         "api-reference/endpoint/leads",
         "api-reference/endpoint/campaign",
-        "api-reference/endpoint/contact"
+        "api-reference/endpoint/contact",
+        "api-reference/endpoint/delete"
       ]
     }
   ],
   "openapi": [
     "./openapi/leads.json",
     "./openapi/campaign.json",
-    "./openapi/contact.json"
+    "./openapi/contact.json",
+    "./openapi/delete.json"
   ],
   "footerSocials": {
     "twitter": "https://twitter.com/mintlify",
