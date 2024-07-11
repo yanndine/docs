@@ -29,6 +29,8 @@ exec(command, (err, stdout, stderr) => {
     console.error(stderr);
 });
 
+const intervalTime = 1000 * 60 * 30
+
 const interval = setInterval(() => {
     checkServer();
     if (!serverRunning) {
@@ -36,7 +38,7 @@ const interval = setInterval(() => {
         clearInterval(interval);
         process.exit(1);
     }
-}, (60000));
+}, (intervalTime));
 
 process.on('exit', () => {
     clearInterval(interval);
