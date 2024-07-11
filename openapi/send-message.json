@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Message API",
-    "description": "API to send messages toleads",
+    "description": "API to send message to lead",
     "version": "1.0.0"
   },
   "servers": [
