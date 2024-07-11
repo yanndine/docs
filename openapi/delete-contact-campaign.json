@@ -13,7 +13,7 @@
   "paths": {
     "/api/v1/leads/campaign/delete": {
       "post": {
-        "summary": "Delete a lead",
+        "summary": "Delete a lead from a campaign",
         "requestBody": {
           "required": true,
           "content": {

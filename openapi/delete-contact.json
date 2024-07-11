@@ -13,7 +13,7 @@
   "paths": {
     "/api/v1/leads/contact/delete": {
       "post": {
-        "summary": "Delete a lead",
+        "summary": "Delete a lead from the workspace",
         "requestBody": {
           "required": true,
           "content": {
